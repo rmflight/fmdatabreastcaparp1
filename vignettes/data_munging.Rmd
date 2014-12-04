@@ -1,7 +1,7 @@
 <!--
 % \VignetteEngine{knitr}
 % \VignetteIndexEntry{fmdatamcf7parp1: Nucleosome bound PARP1 in MCF-7 Cells Data}
-% \VignetteDepends{GenomicRanges}
+% \VignetteDepends{GenomicRanges, parallel}
 % \VignettePackage{fmdatamcf7parp1}
 -->
 
@@ -15,4 +15,125 @@ This document describes the processing to generate all the raw data used in the 
 
 ## PARP1 Reads
 
-The original data existed as comma delimited files (one for each chromosome)
+The original data existed as comma delimited files (one for each chromosome), with an id (id), the bead id (bead_id), start location (startx), and strand (strand). They were named with this convention: YFM_LNX_chrX.csv, where LNX could be either LN4 or LN5 (two lanes on the sequencer) and chrX where X is the chromosome number.
+
+```{r setup}
+library(fmdatamcf7parp1)
+library(GenomicRanges)
+library(parallel)
+raw_data_dir <- "/mlab/data/rmflight/Documents/projects/work/fondufe-mittendorf_lab/parp1_data/"
+save_dir <- "/mlab/data/rmflight/Documents/projects/work/fondufe-mittendorf_lab/fmdatamcf7parp1/data"
+options(mc.cores = 10)
+```
+
+```{r ln4_reads, eval=FALSE}
+ln4_files <- file.path(raw_data_dir, dir(raw_data_dir, pattern = "YFM_LN4"))
+
+parp1_ln4_reads_all <- GRanges(seqnames = "chr1", ranges = IRanges(start = 1, end = 1), strand = "*")
+
+for (i_file in ln4_files){
+  tmp_reads <- read.table(i_file, sep = ",", header = TRUE)
+	use_chr <- get_chr(i_file, "_")
+	parp1_ln4_reads_all <- c(parp1_ln4_reads_all, GRanges(seqnames = use_chr,
+					  ranges = IRanges(start = tmp_reads[, "startx"], width = 1),
+					  strand = "*"))
+}
+parp1_ln4_reads_all <- parp1_ln4_reads_all[2:(length(parp1_ln4_reads_all))]
+save(parp1_ln4_reads_all, file = file.path(save_dir, "parp1_ln4_reads_all.RData"))
+rm(parp1_ln4_reads_all)
+```
+
+```{r ln5_reads, eval=FALSE}
+ln5_files <- file.path(raw_data_dir, dir(raw_data_dir, pattern = "YFM_LN5"))
+
+parp1_ln5_reads_all <- GRanges(seqnames = "chr1", ranges = IRanges(start = 1, end = 1), strand = "*")
+
+for (i_file in ln5_files){
+  tmp_reads <- read.table(i_file, sep = ",", header = TRUE)
+  use_chr <- get_chr(i_file, "_")
+	parp1_ln5_reads_all <- c(parp1_ln5_reads_all, GRanges(seqnames = use_chr,
+					  ranges = IRanges(start = tmp_reads[, "startx"], width = 1),
+					  strand = "*"))
+}
+parp1_ln5_reads_all <- parp1_ln5_reads_all[2:(length(parp1_ln5_reads_all))]
+save(parp1_ln5_reads_all, file = file.path(save_dir, "parp1_ln5_reads_all.RData"))
+rm(parp1_ln5_reads_all)
+```
+
+
+### Quality Check
+
+We want to double check the quality of the PARP1 data. Based on having pooled three replicate experiments and ignoring the strand information, we should have a maximum of 6 reads at any given location. Lets check.
+
+#### Chromosome 3
+
+We will initially check chromosome 3 in LN4.
+
+```{r load_chrom_3}
+data(parp1_ln4_reads_all)
+chr3_reads <- parp1_ln4_reads_all[seqnames(parp1_ln4_reads_all) == "chr3"]
+chr3_unique <- unique(chr3_reads)
+chr3_overlap <- countOverlaps(chr3_unique, chr3_reads)
+mcols(chr3_unique)$overlap <- chr3_overlap
+chr3_unique <- sort(chr3_unique)
+```
+
+So, what values do we have and how many of them?
+
+```{r check_chr3_counts}
+chr3_overlap_rle <- rle(sort(chr3_overlap))
+chr3_counts <- chr3_overlap_rle$values
+names(chr3_counts) <- chr3_overlap_rle$lengths
+chr3_counts
+```
+
+Wow. Some of these have really large counts. One might expect to get counts >= 20 or 30, but having counts of > 100 points to some intrinsic bias. Given that all of the bead id's are unique, indicating that there are unique reads, then there is something odd about these regions.
+
+What is the value that accounts for 99% of the total reads?
+
+```{r chr3_99}
+chr3_totals <- data.frame(n_loc = chr3_overlap_rle$lengths, count_at_loc = chr3_overlap_rle$values)
+chr3_totals$tot_reads <- chr3_totals$n_loc * chr3_totals$count_at_loc
+chr3_totals$cum_reads <- cumsum(chr3_totals$tot_reads)
+chr3_totals$perc_reads <- chr3_totals$cum_reads / sum(chr3_totals$tot_reads) * 100
+head(chr3_totals)
+```
+
+From this, it looks like we should have a maximum at **5** or **6**. This is in line with what we expect based on the data available. We should do this across all of the chromosomes, however.
+
+```{r ln4_all_unique}
+ln4_unique <- unique(parp1_ln4_reads_all)
+ln4_overlap <- countOverlaps(ln4_unique, parp1_ln4_reads_all)
+ln4_overlap_rle <- rle(sort(ln4_overlap))
+ln4_counts <- data.frame(n_loc = ln4_overlap_rle$lengths, count_at_loc = ln4_overlap_rle$values)
+
+ln4_counts$tot_reads <- ln4_counts$n_loc * ln4_counts$count_at_loc
+ln4_counts$cum_reads <- cumsum(ln4_counts$tot_reads)
+ln4_counts$perc_reads <- ln4_counts$cum_reads / sum(ln4_counts$tot_reads) * 100
+head(ln4_counts)
+```
+
+And there we have it! At **6** reads, we are accounting for 99% of the reads available. The other reads make up less than 1% of the data. **6** is also the ideal maximum expected based on the data we have.
+
+So instead of having a **full** reads object, we will generate the set of **unique** reads, count the number of reads at each location, and trim the number of reads to **6**.
+
+### PARP1 Unique
+
+```{r parp1_ln4_unique, eval=FALSE}
+data(parp1_ln4_reads_all)
+max_count <- 6
+parp1_ln4_unique <- unique(parp1_ln4_reads_all)
+parp1_ln4_counts <- countOverlaps(parp1_ln4_unique, parp1_ln4_reads_all)
+parp1_ln4_counts[parp1_ln4_counts > max_count] <- max_count
+mcols(parp1_ln4_unique)$n_count <- parp1_ln4_counts
+save(parp1_ln4_unique, file = file.path(save_dir, "parp1_ln4_unique.RData"))
+```
+
+```{r parp1_ln5_unique, eval=FALSE}
+data(parp1_ln5_reads_all)
+parp1_ln5_unique <- unique(parp1_ln5_reads_all)
+parp1_ln5_counts <- countOverlaps(parp1_ln5_unique, parp1_ln5_reads_all)
+parp1_ln5_counts[parp1_ln5_counts > max_count] <- max_count
+mcols(parp1_ln5_unique)$n_count <- parp1_ln5_counts
+save(parp1_ln5_unique, file = file.path(save_dir, "parp1_ln5_unique.RData"))
+```
