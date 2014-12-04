@@ -7,3 +7,4 @@ Author: Robert M Flight
 Maintainer: Robert M Flight <rflight79@gmail.com>
 Description: Contains the data used for analysis of PARP1 nucleosome binding in MCF-7 cells by the Fondufe-Mittendorf lab at University of Kentucky
 License: CC0
+VignetteBuilder: knitr
