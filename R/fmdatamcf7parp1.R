@@ -106,3 +106,25 @@ get_chr <- function(filename, split_chr){
 #'
 #' @source http://genome.ucsc.edu/cgi-bin/hgTables?hgsid=396587911_8YHquTEUSQjmIfAHtJJT7vWY7N8U&clade=mammal&org=Human&db=hg19&hgta_group=allTracks&hgta_track=wgEncodeHaibMethylRrbs&hgta_table=wgEncodeHaibMethylRrbsMcf7DukeSitesRep2
 "methyl_rep2"
+
+
+#' Transcript start sites
+#'
+#' 2KB windows around Ensembl transcript start sites (TSS)
+#'
+#' @format A named GRanges object, where the names are the Ensembl transcript IDs
+#'
+#' @source ensembl transcripts
+"tss_windows"
+
+#' Histone Marks
+#' 
+#' ChIP-Seq peaks of various histone marks
+#' 
+#' @format GRangesList of length 6, with H3k09me3, H3k27ac, H3k27me3, H3k36me3,
+#' H3k4me3_r1 and H3k4me3_r2. Each is a GRanges object with mcols of:
+#' \describe{
+#'   \item{mcols.score}{the score}
+#'   \item{mcols.signal}{the peak intensity}
+#'   \item{mcols.pvalue}{-1 * log10 of the pvalue}
+#' }

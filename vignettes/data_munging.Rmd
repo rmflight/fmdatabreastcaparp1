@@ -196,3 +196,69 @@ save(methyl_rep2, file = file.path(save_dir, "methyl_rep2.RData"))
 rm(methyl_rep1, methyl_rep2)
 ```
 
+## Histone Modifications
+
+The ChIP-Seq peak files for the various histone modifications were downloaded from [UCSC](http://genome.ucsc.edu/cgi-bin/hgTracks?hgsid=339462435&hgt_=1371663888&db=hg19&tsCurTab=advancedTab&hgt_tsDelRow=&hgt_tsAddRow=&hgt_tsPage=&tsSimple=&tsName=histone&tsDescr=&tsGroup=Any&tsType=Any&hgt_mdbVar1=cell&hgt_mdbVal1=MCF-7&hgt_mdbVar2=antibody&hgt_mdbVal2=Any&hgt_tSearch=search).
+
+These include:
+
+* H3k09me3
+* H3k27ac
+* H3k27me3
+* H3k36me3
+* H3k4me3, replicates 1 and 2
+
+Note that for H3k4me3, one file is H3k4me3 and the other is H3k04me3.
+
+```{r read_histones, eval=FALSE}
+histone_patterns <- list(H3k09me3 = "*H3k09me3",
+                        H3k27ac = "*H3k27ac",
+                        H3k27me3 = "*H3k27me3",
+                        H3k36me3 = "*H3k36me3",
+                        H3k4me3_r1 = "*H3k4me3",
+                        H3k4me3_r2 = "*H3k04me3")
+
+histone_dir <- file.path(raw_data_dir, "histone_marks")
+histone_names <- c("chrom", "start", "end", "name", "score", "strand", "signal", "pvalue", "qvalue", "other")
+histone_marks <- lapply(histone_patterns, function(in_pattern){
+  use_file <- dir(histone_dir, pattern = in_pattern)
+  tmp <- read.table(file.path(histone_dir, use_file), header = FALSE, sep = "\t")
+  names(tmp) <- histone_names
+  GRanges(seqnames = tmp$chrom,
+  			  ranges = IRanges(start = tmp$start, end = tmp$end),
+					mcols = DataFrame(tmp[, c("score", "signal", "pvalue")]))
+})
+histone_marks <- GRangesList(histone_marks)
+save(histone_marks, file = file.path(save_dir, "histone_marks.RData"))
+rm(histone_marks)
+```
+
+
+
+## Expression
+
+The expression data is from 
+
+
+## Transcription Start Site Regions
+
+To get association between transcription start site (TSS) regions and other features, we should have the TSS's and their windows already saved in a file.
+
+```{r get_tss_windows, eval = FALSE}
+tss_file <- file.path(raw_data_dir, "ensGene_TTSS.csv")
+tss_data <- read.table(tss_file, header = TRUE, sep = ",", stringsAsFactors = FALSE)
+tss_regions <- GRanges(seqnames = tss_data$chrom,
+                       strand = tss_data$strand,
+                       ranges = IRanges(start = tss_data$txStart,
+                                        end = tss_data$txEnd),
+                       names = tss_data$name)
+rm(tss_data)
+
+tss_windows <- GRanges(seqnames = seqnames(tss_regions),
+                       strand = strand(tss_regions),
+                       ranges = IRanges(start = start(tss_regions) - 1000,
+                                        end = start(tss_regions) + 1000))
+names(tss_windows) <- mcols(tss_regions)$names
+save(tss_windows, file = file.path(save_dir, "tss_windows.RData"))
+rm(tss_windows, tss_regions)
+```
