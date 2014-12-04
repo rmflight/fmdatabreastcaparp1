@@ -79,3 +79,30 @@ get_chr <- function(filename, split_chr){
 #'
 #' @source http://genome.ucsc.edu/cgi-bin/hgFileUi?db=hg19&g=wgEncodeUwTfbs
 "ctcf_rep2"
+
+
+#' Methylation rep1
+#'
+#' Methylation reads
+#'
+#' @format A GRanges object with an mcols DataFrame with columns:
+#' \describe{
+#'   \item{mcols.readCount}{the number of reads}
+#'   \item{mcols.percentMeth}{the percentage of reads that were methylated}
+#' }
+#'
+#' @source http://genome.ucsc.edu/cgi-bin/hgTables?hgsid=396587911_8YHquTEUSQjmIfAHtJJT7vWY7N8U&clade=mammal&org=Human&db=hg19&hgta_group=allTracks&hgta_track=wgEncodeHaibMethylRrbs&hgta_table=wgEncodeHaibMethylRrbsMcf7DukeSitesRep1
+"methyl_rep1"
+
+#' Methylation rep2
+#'
+#' Methylation reads
+#'
+#' @format A GRanges object with an mcols DataFrame with columns:
+#' \describe{
+#'   \item{mcols.readCount}{the number of reads}
+#'   \item{mcols.percentMeth}{the percentage of reads that were methylated}
+#' }
+#'
+#' @source http://genome.ucsc.edu/cgi-bin/hgTables?hgsid=396587911_8YHquTEUSQjmIfAHtJJT7vWY7N8U&clade=mammal&org=Human&db=hg19&hgta_group=allTracks&hgta_track=wgEncodeHaibMethylRrbs&hgta_table=wgEncodeHaibMethylRrbsMcf7DukeSitesRep2
+"methyl_rep2"

@@ -162,3 +162,37 @@ ctcf_rep2 <- GRanges(seqnames = rep2$chrom,
 
 save(ctcf_rep1, file = file.path(save_dir, "ctcf_rep1.RData"))
 save(ctcf_rep2, file = file.path(save_dir, "ctcf_rep2.RData"))
+rm(ctcf_rep1, ctcf_rep2)
+```
+
+## Methylation
+
+The methylation data comes from the UCSC:
+
+* [rep1](http://genome.ucsc.edu/cgi-bin/hgTables?hgsid=396587911_8YHquTEUSQjmIfAHtJJT7vWY7N8U&clade=mammal&org=Human&db=hg19&hgta_group=allTracks&hgta_track=wgEncodeHaibMethylRrbs&hgta_table=wgEncodeHaibMethylRrbsMcf7DukeSitesRep1)
+* [rep2](http://genome.ucsc.edu/cgi-bin/hgTables?hgsid=396587911_8YHquTEUSQjmIfAHtJJT7vWY7N8U&clade=mammal&org=Human&db=hg19&hgta_group=allTracks&hgta_track=wgEncodeHaibMethylRrbs&hgta_table=wgEncodeHaibMethylRrbsMcf7DukeSitesRep2)
+
+```{r save_methylation}
+methyl_names <- c("bin", "chrom", "start", "end", "name", "score", "strand", "thickStart", "thickEnd", "itemRGB", "readCount", "percentMeth")
+methyl_path <- file.path(raw_data_dir, "methylation_data")
+methyl_files <- file.path(methyl_path, dir(methyl_path, pattern = "mcf7_methyl"))
+
+rep1 <- read.table(methyl_files[1], header = FALSE, sep = "\t", stringsAsFactors = FALSE)
+names(rep1) <- methyl_names
+methyl_rep1 <- GRanges(seqnames = rep1$chrom,
+                       strand = rep1$strand,
+                      ranges = IRanges(start = rep1$start, width = 1),
+                      mcols = DataFrame(rep1[, c("readCount", "percentMeth")]))
+
+rep2 <- read.table(methyl_files[2], header = FALSE, sep = "\t", stringsAsFactors = FALSE)
+names(rep2) <- methyl_names
+methyl_rep2 <- GRanges(seqnames = rep2$chrom,
+                       strand = rep2$strand,
+                      ranges = IRanges(start = rep2$start, width = 1),
+                      mcols = DataFrame(rep2[, c("readCount", "percentMeth")]))
+
+save(methyl_rep1, file = file.path(save_dir, "methyl_rep1.RData"))
+save(methyl_rep2, file = file.path(save_dir, "methyl_rep2.RData"))
+rm(methyl_rep1, methyl_rep2)
+```
+
