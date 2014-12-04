@@ -51,3 +51,31 @@ get_chr <- function(filename, split_chr){
 #'
 #' @source Processing reads from YFM
 "parp1_ln5_unique"
+
+
+#' CTCF rep1
+#'
+#' CTCF ChIP-Seq peak intensity.
+#'
+#' @format A GRanges object with an mcols DataFrame with columns:
+#' \describe{
+#'   \item{mcols.signal}{signal}
+#'   \item{mcols.pValue}{the pValue of the peak}
+#' }
+#'
+#' @source http://genome.ucsc.edu/cgi-bin/hgFileUi?db=hg19&g=wgEncodeUwTfbs
+"ctcf_rep1"
+
+
+#' CTCF rep2
+#'
+#' CTCF ChIP-Seq peak intensity.
+#'
+#' @format A GRanges object with an mcols DataFrame with columns:
+#' \describe{
+#'   \item{mcols.signal}{signal}
+#'   \item{mcols.pValue}{the pValue of the peak}
+#' }
+#'
+#' @source http://genome.ucsc.edu/cgi-bin/hgFileUi?db=hg19&g=wgEncodeUwTfbs
+"ctcf_rep2"

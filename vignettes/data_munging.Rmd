@@ -137,3 +137,28 @@ parp1_ln5_counts[parp1_ln5_counts > max_count] <- max_count
 mcols(parp1_ln5_unique)$n_count <- parp1_ln5_counts
 save(parp1_ln5_unique, file = file.path(save_dir, "parp1_ln5_unique.RData"))
 ```
+
+## CTCF
+
+The CTCF transcription factor ChIP-Seq data was downloaded from the [UCSC](http://genome.ucsc.edu/cgi-bin/hgFileUi?db=hg19&g=wgEncodeUwTfbs) (select peaks from MCF-7 and CTCF).
+
+```{r ctcf_data, eval=FALSE}
+ctcf_names <- c("chrom", "start", "end", "name", "score", "strand", "signal", "pValue", "qValue")
+ctcf_path <- file.path(raw_data_dir, "ctcf_peaks")
+ctcf_files <- file.path(ctcf_path, dir(ctcf_path, pattern = "narrowPeak.gz"))
+rep1 <- read.table(ctcf_files[1], header = FALSE, sep = "\t", stringsAsFactors = FALSE)
+
+names(rep1) <- ctcf_names
+ctcf_rep1 <- GRanges(seqnames = rep1$chrom,
+                     ranges = IRanges(start = rep1$start, end = rep1$end),
+                     mcols = DataFrame(rep1[, c("signal", "pValue")]))
+
+
+rep2 <- read.table(ctcf_files[2], header = FALSE, sep = "\t", stringsAsFactors = FALSE)
+names(rep2) <- ctcf_names
+ctcf_rep2 <- GRanges(seqnames = rep2$chrom,
+                     ranges = IRanges(start = rep2$start, end = rep2$end),
+                     mcols = DataFrame(rep2[, c("signal", "pValue")]))
+
+save(ctcf_rep1, file = file.path(save_dir, "ctcf_rep1.RData"))
+save(ctcf_rep2, file = file.path(save_dir, "ctcf_rep2.RData"))
