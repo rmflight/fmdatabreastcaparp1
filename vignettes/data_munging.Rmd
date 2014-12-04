@@ -20,7 +20,7 @@ The original data existed as comma delimited files (one for each chromosome), wi
 ```{r setup}
 library(fmdatamcf7parp1)
 library(GenomicRanges)
-library(parallel)
+library(GEOquery)
 raw_data_dir <- "/mlab/data/rmflight/Documents/projects/work/fondufe-mittendorf_lab/parp1_data/"
 save_dir <- "/mlab/data/rmflight/Documents/projects/work/fondufe-mittendorf_lab/fmdatamcf7parp1/data"
 options(mc.cores = 10)
@@ -237,7 +237,14 @@ rm(histone_marks)
 
 ## Expression
 
-The expression data is from 
+The expression data is a DNA Microarray experiment, which we will get from GEO, as [GSM307014](http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM307014).
+
+```{r get_expression}
+expr_data <- dataTable(getGEO(GEO = "GSM307014"))@table
+rownames(expr_data) <- as.character(expr_data$ID_REF)
+expr_data$ID_REF <- rownames(expr_data)
+save(expr_data, file = file.path(save_dir, "expr_data.RData"))
+```
 
 
 ## Transcription Start Site Regions
