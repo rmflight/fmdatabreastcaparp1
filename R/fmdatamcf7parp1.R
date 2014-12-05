@@ -16,7 +16,9 @@ get_chr <- function(filename, split_chr){
 
 #' All the PARP1 reads from LN4
 #'
-#' A dataset containing all the PARP1 reads from LN4
+#' A dataset containing all the PARP1 reads from LN4 (MCF-7). This data consists of three biological replicates
+#' sequenced on a single Illumina lane.
+#' 
 #' @name parp1_ln4_reads_all
 #' @format A GRanges object.
 #'
@@ -25,7 +27,8 @@ NULL
 
 #' All the PARP1 reads from LN5
 #'
-#' A dataset containing all the PARP1 reads from LN4
+#' A dataset containing all the PARP1 reads from LN5 (MDA-MB231). This data consists of three biological replicates
+#' sequenced on a single Illumina lane.
 #'
 #' @format A GRanges object.
 #' @name parp1_ln5_reads_all
@@ -35,8 +38,9 @@ NULL
 
 #' The unique location PARP1 reads from LN4
 #'
-#' A dataset containing only the unique location PARP1 reads from LN4, with the number of reads
-#' at each location capped at 6.
+#' A dataset containing only the unique location PARP1 reads from LN4 (MCF-7), with the number of reads
+#' at each location capped at 6. The cap of 6 comes from having unique reads, in three biological
+#' replicates, and ignoring strand information.
 #'
 #' @format A GRanges object with an mcols DataFrame with a column named n_count
 #'
@@ -46,8 +50,9 @@ NULL
 
 #' The unique location PARP1 reads from LN5
 #'
-#' A dataset containing only the unique location PARP1 reads from LN5, with the number of reads
-#' at each location capped at 6.
+#' A dataset containing only the unique location PARP1 reads from LN5 (MDA-MB231), with the number of reads
+#' at each location capped at 6. The cap of 6 comes from having unique reads, in three biological
+#' replicates, and ignoring strand information.
 #'
 #' @format A GRanges object with an mcols DataFrame with a column named n_count
 #'
@@ -58,7 +63,7 @@ NULL
 
 #' CTCF rep1
 #'
-#' CTCF ChIP-Seq peak intensity.
+#' CTCF ChIP-Seq peak intensity in MCF-7 cells, replicate 1.
 #'
 #' @format A GRanges object with an mcols DataFrame with columns:
 #' \describe{
@@ -73,7 +78,7 @@ NULL
 
 #' CTCF rep2
 #'
-#' CTCF ChIP-Seq peak intensity.
+#' CTCF ChIP-Seq peak intensity in MCF-7 cells, replicate 2.
 #'
 #' @format A GRanges object with an mcols DataFrame with columns:
 #' \describe{
@@ -88,7 +93,7 @@ NULL
 
 #' Methylation rep1
 #'
-#' Methylation reads
+#' Methylation reads from MCF-7, replicate 1
 #'
 #' @format A GRanges object with an mcols DataFrame with columns:
 #' \describe{
@@ -102,7 +107,7 @@ NULL
 
 #' Methylation rep2
 #'
-#' Methylation reads
+#' Methylation reads from MCF-7, replicate 2
 #'
 #' @format A GRanges object with an mcols DataFrame with columns:
 #' \describe{
