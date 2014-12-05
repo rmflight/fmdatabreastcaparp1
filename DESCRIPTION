@@ -1,10 +1,12 @@
-Package: fmdatamcf7parp1
+Package: fmdatabreastcaparp1
 Type: Package
-Title: Fondufe-Mittendorfe lab data for PARP1 binding in MCF-7
+Title: Fondufe-Mittendorfe lab data for PARP1 binding in MCF-7 and MDA-MB231
 Version: 0.0.1
 Date: 2014-12-04
 Author: Robert M Flight
 Maintainer: Robert M Flight <rflight79@gmail.com>
-Description: Contains the data used for analysis of PARP1 nucleosome binding in MCF-7 cells by the Fondufe-Mittendorf lab at University of Kentucky
+Description: Contains the data used for analysis of PARP1 nucleosome binding in
+    MCF-7 and MDA-MB231 cells by the Fondufe-Mittendorf lab at University of Kentucky
 License: CC0
 VignetteBuilder: knitr
+LazyData: TRUE
