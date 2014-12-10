@@ -6,7 +6,7 @@ This package contains the data used for the correlation analysis in the publicat
 
 This data is used by the [analysis package](https://github.com/rmflight/fmanalysisbreastcaparp1) to generate the vignettes that report the actual correlations between PARP1 reads and other data. Unless otherwise noted, all data was downloaded for the MCF-7 cell line.
 
-Please see the vignette for details on sources of data and processing. In most cases, what is done is simply to take data from UCSC and generate a `GenomicRanges` object that can be worked with in the analysis. Unl
+Please see the vignette for details on sources of data and processing. In most cases, what is done is simply to take data from UCSC and generate a `GenomicRanges` object that can be worked with in the analysis.
 
 This package contains the following `RData` objects:
 
