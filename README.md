@@ -30,9 +30,11 @@ If this package is used in other analyses, it should be cited as:
 
 ## Installation
 
-To install this package, you should use `devtools`:
+To install this package, you will need to first download the data files from `figshare`, and then clone this package and install:
 
 ```
-library("devtools")
-install_github("rmflight/fmdatabreastcaparp1")
+git clone https://github.com/rmflight/fmdatabreastcaparp1.git
+curl http://figshare_link
+unzip figshare.zip -d fmdatabreastcaparp1/data
+R CMD install fmdatabreastcaparp1
 ```
