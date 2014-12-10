@@ -276,3 +276,11 @@ names(tss_windows) <- mcols(tss_regions)$names
 save(tss_windows, file = file.path(save_dir, "tss_windows.RData"))
 rm(tss_windows, tss_regions)
 ```
+
+### Session Info
+
+```{r}
+Sys.time()
+sessionInfo()
+```
+
