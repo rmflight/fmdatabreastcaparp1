@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>fmdatamcf7parp1: Nucleosome bound PARP1 in MCF-7 and MDA-MB231 Cells Data</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<!--
+% \VignetteEngine{knitr}
+% \VignetteIndexEntry{fmdatamcf7parp1: Nucleosome bound PARP1 in MCF-7 and MDA-MB231 Cells Data}
+% \VignetteDepends{GenomicRanges, GEOquery}
+% \VignettePackage{fmdatabreastcaparp1}
+-->
+
+<h1>fmdatamcf7parp1: Nucleosome bound PARP1 in MCF-7 and MDA-MB231 Cells Data</h1>
+
+<p>Authored by: <strong>Robert M Flight</strong> (<a href="mailto:rflight79@gmail.com">rflight79@gmail.com</a>) on 2014-12-10</p>
+
+<h2>Data Collection and Formatting</h2>
+
+<p>This document describes the processing to generate all the raw data used in the analysis of nucleosome bound PARP1 in MCF-7 generated by the Fondufe-Mittendorf lab at the University of Kentucky. This includes the actual unique reads of nucleosome bound PARP1, as well as expression data, methylation data, histone marks, and CTCF transcription factor binding. The processing for each one follows in the rest of this document. Although some of the code is not run in the generation of this vignette, all of the code was run once to process and save the data in the <code>RData</code> format.</p>
+
+<h2>PARP1 Reads</h2>
+
+<p>The original data existed as comma delimited files (one for each chromosome), with an id (id), the bead id (<code>bead_id</code>), start location (<code>startx</code>), and strand (<code>strand</code>). They were named with this convention: YFM_LNX_chrX.csv, where LNX could be either LN4 (MCF-7) or LN5 (MDA-MB231) (two lanes on the sequencer) and chrX where X is the chromosome number. Each lane had three barcoded biological replicates. This data contains aggregated reads for each lane after removing barcoding, and then removing <strong>duplicate</strong> reads (i.e. completely identical sequence and alignment).</p>
+
+<pre><code class="r">library(fmdatabreastcaparp1)
+library(GenomicRanges)
+library(GEOquery)
+raw_data_dir &lt;- &quot;/mlab/data/rmflight/Documents/projects/work/fondufe-mittendorf_lab/parp1_data/&quot;
+save_dir &lt;- &quot;/mlab/data/rmflight/Documents/projects/work/fondufe-mittendorf_lab/fmdatamcf7parp1/data&quot;
+</code></pre>
+
+<h3>Read in LN4 reads and save as a GenomicRanges</h3>
+
+<pre><code class="r">ln4_files &lt;- file.path(raw_data_dir, dir(raw_data_dir, pattern = &quot;YFM_LN4&quot;))
+
+parp1_ln4_reads_all &lt;- GRanges(seqnames = &quot;chr1&quot;, ranges = IRanges(start = 1, end = 1), strand = &quot;*&quot;)
+
+for (i_file in ln4_files){
+  tmp_reads &lt;- read.table(i_file, sep = &quot;,&quot;, header = TRUE)
+    use_chr &lt;- get_chr(i_file, &quot;_&quot;)
+    parp1_ln4_reads_all &lt;- c(parp1_ln4_reads_all, GRanges(seqnames = use_chr,
+                      ranges = IRanges(start = tmp_reads[, &quot;startx&quot;], width = 1),
+                      strand = &quot;*&quot;))
+}
+parp1_ln4_reads_all &lt;- parp1_ln4_reads_all[2:(length(parp1_ln4_reads_all))]
+save(parp1_ln4_reads_all, file = file.path(save_dir, &quot;parp1_ln4_reads_all.RData&quot;))
+rm(parp1_ln4_reads_all)
+</code></pre>
+
+<h3>Read in LN5 reads and save as GenomicRanges</h3>
+
+<pre><code class="r">ln5_files &lt;- file.path(raw_data_dir, dir(raw_data_dir, pattern = &quot;YFM_LN5&quot;))
+
+parp1_ln5_reads_all &lt;- GRanges(seqnames = &quot;chr1&quot;, ranges = IRanges(start = 1, end = 1), strand = &quot;*&quot;)
+
+for (i_file in ln5_files){
+  tmp_reads &lt;- read.table(i_file, sep = &quot;,&quot;, header = TRUE)
+  use_chr &lt;- get_chr(i_file, &quot;_&quot;)
+    parp1_ln5_reads_all &lt;- c(parp1_ln5_reads_all, GRanges(seqnames = use_chr,
+                      ranges = IRanges(start = tmp_reads[, &quot;startx&quot;], width = 1),
+                      strand = &quot;*&quot;))
+}
+parp1_ln5_reads_all &lt;- parp1_ln5_reads_all[2:(length(parp1_ln5_reads_all))]
+save(parp1_ln5_reads_all, file = file.path(save_dir, &quot;parp1_ln5_reads_all.RData&quot;))
+rm(parp1_ln5_reads_all)
+</code></pre>
+
+<h3>Quality Check</h3>
+
+<p>We want to double check the quality of the PARP1 data. Based on having pooled three replicate experiments and removed duplicates, ignoring the strand information, we should have a maximum of 6 reads at any given location. Lets check.</p>
+
+<h4>Chromosome 3</h4>
+
+<p>We will initially check chromosome 3 in LN4.</p>
+
+<pre><code class="r">data(parp1_ln4_reads_all)
+chr3_reads &lt;- parp1_ln4_reads_all[seqnames(parp1_ln4_reads_all) == &quot;chr3&quot;]
+chr3_unique &lt;- unique(chr3_reads)
+chr3_overlap &lt;- countOverlaps(chr3_unique, chr3_reads)
+mcols(chr3_unique)$overlap &lt;- chr3_overlap
+chr3_unique &lt;- sort(chr3_unique)
+</code></pre>
+
+<p>So, what values do we have and how many of them?</p>
+
+<pre><code class="r">chr3_overlap_rle &lt;- rle(sort(chr3_overlap))
+chr3_counts &lt;- chr3_overlap_rle$values
+names(chr3_counts) &lt;- chr3_overlap_rle$lengths
+chr3_counts
+</code></pre>
+
+<pre><code>## 4025504  488678   85017   20489    6897    2856    1309     716     369 
+##       1       2       3       4       5       6       7       8       9 
+##     248     136      81      62      41      25      19       9       9 
+##      10      11      12      13      14      15      16      17      18 
+##       6       6       3       2       4       3       1       3       2 
+##      19      20      21      22      23      24      25      26      28 
+##       1       2       1       3       1       4       2       1       3 
+##      29      30      32      33      34      35      36      39      43 
+##       1       1       1       1       1       1       1       1       1 
+##      44      48      50      57      58      79      82     107     110 
+##       1       1       1       1       1       1       1 
+##     114     118     275     335     482     858    1256
+</code></pre>
+
+<p>Wow. Some of these have really large counts. One might expect to get counts &gt;= 20 or 30, but having counts of &gt; 100 points to some intrinsic bias. Given that all of the bead id&#39;s are unique, indicating that there are unique reads, then there is something odd about these regions.</p>
+
+<p>What is the value that accounts for 99% of the total reads?</p>
+
+<pre><code class="r">chr3_totals &lt;- data.frame(n_loc = chr3_overlap_rle$lengths, count_at_loc = chr3_overlap_rle$values)
+chr3_totals$tot_reads &lt;- chr3_totals$n_loc * chr3_totals$count_at_loc
+chr3_totals$cum_reads &lt;- cumsum(chr3_totals$tot_reads)
+chr3_totals$perc_reads &lt;- chr3_totals$cum_reads / sum(chr3_totals$tot_reads) * 100
+head(chr3_totals)
+</code></pre>
+
+<pre><code>##     n_loc count_at_loc tot_reads cum_reads perc_reads
+## 1 4025504            1   4025504   4025504   74.23851
+## 2  488678            2    977356   5002860   92.26295
+## 3   85017            3    255051   5257911   96.96662
+## 4   20489            4     81956   5339867   98.47805
+## 5    6897            5     34485   5374352   99.11403
+## 6    2856            6     17136   5391488   99.43005
+</code></pre>
+
+<p>From this, it looks like we should have a maximum at <strong>5</strong> or <strong>6</strong>. This is in line with what we expect based on the data available. We should do this across all of the chromosomes, however.</p>
+
+<pre><code class="r">ln4_unique &lt;- unique(parp1_ln4_reads_all)
+ln4_overlap &lt;- countOverlaps(ln4_unique, parp1_ln4_reads_all)
+ln4_overlap_rle &lt;- rle(sort(ln4_overlap))
+ln4_counts &lt;- data.frame(n_loc = ln4_overlap_rle$lengths, count_at_loc = ln4_overlap_rle$values)
+
+ln4_counts$tot_reads &lt;- ln4_counts$n_loc * ln4_counts$count_at_loc
+ln4_counts$cum_reads &lt;- cumsum(ln4_counts$tot_reads)
+ln4_counts$perc_reads &lt;- ln4_counts$cum_reads / sum(ln4_counts$tot_reads) * 100
+head(ln4_counts)
+</code></pre>
+
+<pre><code>##      n_loc count_at_loc tot_reads cum_reads perc_reads
+## 1 46515687            1  46515687  46515687   76.90300
+## 2  5056531            2  10113062  56628749   93.62263
+## 3   764948            3   2294844  58923593   97.41662
+## 4   164190            4    656760  59580353   98.50243
+## 5    53330            5    266650  59847003   98.94327
+## 6    23981            6    143886  59990889   99.18115
+</code></pre>
+
+<p>And there we have it! At <strong>6</strong> reads, we are accounting for 99% of the reads available. The other reads make up less than 1% of the data. <strong>6</strong> is also the ideal maximum expected based on the data we have.</p>
+
+<p>So instead of having a <strong>full</strong> reads object, we will generate the set of <strong>unique</strong> reads, count the number of reads at each location, and trim the number of reads to <strong>6</strong>.</p>
+
+<h3>PARP1 Unique</h3>
+
+<pre><code class="r">data(parp1_ln4_reads_all)
+max_count &lt;- 6
+parp1_ln4_unique &lt;- unique(parp1_ln4_reads_all)
+parp1_ln4_counts &lt;- countOverlaps(parp1_ln4_unique, parp1_ln4_reads_all)
+parp1_ln4_counts[parp1_ln4_counts &gt; max_count] &lt;- max_count
+mcols(parp1_ln4_unique)$n_count &lt;- parp1_ln4_counts
+save(parp1_ln4_unique, file = file.path(save_dir, &quot;parp1_ln4_unique.RData&quot;))
+</code></pre>
+
+<pre><code class="r">data(parp1_ln5_reads_all)
+parp1_ln5_unique &lt;- unique(parp1_ln5_reads_all)
+parp1_ln5_counts &lt;- countOverlaps(parp1_ln5_unique, parp1_ln5_reads_all)
+parp1_ln5_counts[parp1_ln5_counts &gt; max_count] &lt;- max_count
+mcols(parp1_ln5_unique)$n_count &lt;- parp1_ln5_counts
+save(parp1_ln5_unique, file = file.path(save_dir, &quot;parp1_ln5_unique.RData&quot;))
+</code></pre>
+
+<h2>CTCF</h2>
+
+<p>The CTCF transcription factor ChIP-Seq data was downloaded from the <a href="http://genome.ucsc.edu/cgi-bin/hgFileUi?db=hg19&amp;g=wgEncodeUwTfbs">UCSC</a> (select peaks from MCF-7 and CTCF).</p>
+
+<pre><code class="r">ctcf_names &lt;- c(&quot;chrom&quot;, &quot;start&quot;, &quot;end&quot;, &quot;name&quot;, &quot;score&quot;, &quot;strand&quot;, &quot;signal&quot;, &quot;pValue&quot;, &quot;qValue&quot;)
+ctcf_path &lt;- file.path(raw_data_dir, &quot;ctcf_peaks&quot;)
+ctcf_files &lt;- file.path(ctcf_path, dir(ctcf_path, pattern = &quot;narrowPeak.gz&quot;))
+rep1 &lt;- read.table(ctcf_files[1], header = FALSE, sep = &quot;\t&quot;, stringsAsFactors = FALSE)
+
+names(rep1) &lt;- ctcf_names
+ctcf_rep1 &lt;- GRanges(seqnames = rep1$chrom,
+                     ranges = IRanges(start = rep1$start, end = rep1$end),
+                     mcols = DataFrame(rep1[, c(&quot;signal&quot;, &quot;pValue&quot;)]))
+
+
+rep2 &lt;- read.table(ctcf_files[2], header = FALSE, sep = &quot;\t&quot;, stringsAsFactors = FALSE)
+names(rep2) &lt;- ctcf_names
+ctcf_rep2 &lt;- GRanges(seqnames = rep2$chrom,
+                     ranges = IRanges(start = rep2$start, end = rep2$end),
+                     mcols = DataFrame(rep2[, c(&quot;signal&quot;, &quot;pValue&quot;)]))
+
+save(ctcf_rep1, file = file.path(save_dir, &quot;ctcf_rep1.RData&quot;))
+save(ctcf_rep2, file = file.path(save_dir, &quot;ctcf_rep2.RData&quot;))
+rm(ctcf_rep1, ctcf_rep2)
+</code></pre>
+
+<h2>Methylation</h2>
+
+<p>The methylation data comes from the UCSC table browser:</p>
+
+<ul>
+<li><a href="http://genome.ucsc.edu/cgi-bin/hgTables?hgsid=396587911_8YHquTEUSQjmIfAHtJJT7vWY7N8U&amp;clade=mammal&amp;org=Human&amp;db=hg19&amp;hgta_group=allTracks&amp;hgta_track=wgEncodeHaibMethylRrbs&amp;hgta_table=wgEncodeHaibMethylRrbsMcf7DukeSitesRep1">rep1</a></li>
+<li><a href="http://genome.ucsc.edu/cgi-bin/hgTables?hgsid=396587911_8YHquTEUSQjmIfAHtJJT7vWY7N8U&amp;clade=mammal&amp;org=Human&amp;db=hg19&amp;hgta_group=allTracks&amp;hgta_track=wgEncodeHaibMethylRrbs&amp;hgta_table=wgEncodeHaibMethylRrbsMcf7DukeSitesRep2">rep2</a></li>
+</ul>
+
+<pre><code class="r">methyl_names &lt;- c(&quot;bin&quot;, &quot;chrom&quot;, &quot;start&quot;, &quot;end&quot;, &quot;name&quot;, &quot;score&quot;, &quot;strand&quot;, &quot;thickStart&quot;, &quot;thickEnd&quot;, &quot;itemRGB&quot;, &quot;readCount&quot;, &quot;percentMeth&quot;)
+methyl_path &lt;- file.path(raw_data_dir, &quot;methylation_data&quot;)
+methyl_files &lt;- file.path(methyl_path, dir(methyl_path, pattern = &quot;mcf7_methyl&quot;))
+
+rep1 &lt;- read.table(methyl_files[1], header = FALSE, sep = &quot;\t&quot;, stringsAsFactors = FALSE)
+names(rep1) &lt;- methyl_names
+methyl_rep1 &lt;- GRanges(seqnames = rep1$chrom,
+                       strand = rep1$strand,
+                      ranges = IRanges(start = rep1$start, width = 1),
+                      mcols = DataFrame(rep1[, c(&quot;readCount&quot;, &quot;percentMeth&quot;)]))
+
+rep2 &lt;- read.table(methyl_files[2], header = FALSE, sep = &quot;\t&quot;, stringsAsFactors = FALSE)
+names(rep2) &lt;- methyl_names
+methyl_rep2 &lt;- GRanges(seqnames = rep2$chrom,
+                       strand = rep2$strand,
+                      ranges = IRanges(start = rep2$start, width = 1),
+                      mcols = DataFrame(rep2[, c(&quot;readCount&quot;, &quot;percentMeth&quot;)]))
+
+save(methyl_rep1, file = file.path(save_dir, &quot;methyl_rep1.RData&quot;))
+save(methyl_rep2, file = file.path(save_dir, &quot;methyl_rep2.RData&quot;))
+rm(methyl_rep1, methyl_rep2)
+</code></pre>
+
+<h2>Histone Modifications</h2>
+
+<p>The ChIP-Seq peak files for the various histone modifications were downloaded from <a href="http://genome.ucsc.edu/cgi-bin/hgTracks?hgsid=339462435&amp;hgt_=1371663888&amp;db=hg19&amp;tsCurTab=advancedTab&amp;hgt_tsDelRow=&amp;hgt_tsAddRow=&amp;hgt_tsPage=&amp;tsSimple=&amp;tsName=histone&amp;tsDescr=&amp;tsGroup=Any&amp;tsType=Any&amp;hgt_mdbVar1=cell&amp;hgt_mdbVal1=MCF-7&amp;hgt_mdbVar2=antibody&amp;hgt_mdbVal2=Any&amp;hgt_tSearch=search">UCSC</a>.</p>
+
+<p>These include:</p>
+
+<ul>
+<li>H3k09me3</li>
+<li>H3k27ac</li>
+<li>H3k27me3</li>
+<li>H3k36me3</li>
+<li>H3k4me3, replicates 1 and 2</li>
+</ul>
+
+<p>Note that for H3k4me3, one file is H3k4me3 and the other is H3k04me3.</p>
+
+<pre><code class="r">histone_patterns &lt;- list(H3k09me3 = &quot;*H3k09me3&quot;,
+                        H3k27ac = &quot;*H3k27ac&quot;,
+                        H3k27me3 = &quot;*H3k27me3&quot;,
+                        H3k36me3 = &quot;*H3k36me3&quot;,
+                        H3k4me3_r1 = &quot;*H3k4me3&quot;,
+                        H3k4me3_r2 = &quot;*H3k04me3&quot;)
+
+histone_dir &lt;- file.path(raw_data_dir, &quot;histone_marks&quot;)
+histone_names &lt;- c(&quot;chrom&quot;, &quot;start&quot;, &quot;end&quot;, &quot;name&quot;, &quot;score&quot;, &quot;strand&quot;, &quot;signal&quot;, &quot;pvalue&quot;, &quot;qvalue&quot;, &quot;other&quot;)
+histone_marks &lt;- lapply(histone_patterns, function(in_pattern){
+  use_file &lt;- dir(histone_dir, pattern = in_pattern)
+  tmp &lt;- read.table(file.path(histone_dir, use_file), header = FALSE, sep = &quot;\t&quot;)
+  names(tmp) &lt;- histone_names
+  GRanges(seqnames = tmp$chrom,
+              ranges = IRanges(start = tmp$start, end = tmp$end),
+                    mcols = DataFrame(tmp[, c(&quot;score&quot;, &quot;signal&quot;, &quot;pvalue&quot;)]))
+})
+histone_marks &lt;- GRangesList(histone_marks)
+save(histone_marks, file = file.path(save_dir, &quot;histone_marks.RData&quot;))
+rm(histone_marks)
+</code></pre>
+
+<h2>Expression</h2>
+
+<p>The expression data is a DNA Microarray experiment, which we will get from GEO, as <a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM307014">GSM307014</a>.</p>
+
+<pre><code class="r">expr_data &lt;- dataTable(getGEO(GEO = &quot;GSM307014&quot;))@table
+expr_data$VALUE &lt;- as.numeric(expr_data$VALUE)
+expr_data[, &quot;DETECTION P-VALUE&quot;] &lt;- as.numeric(expr_data[, &quot;DETECTION P-VALUE&quot;])
+rownames(expr_data) &lt;- as.character(expr_data$ID_REF)
+expr_data$ID_REF &lt;- rownames(expr_data)
+save(expr_data, file = file.path(save_dir, &quot;expr_data.RData&quot;))
+</code></pre>
+
+<h2>Transcription Start Site Regions</h2>
+
+<p>To get association between transcription start site (TSS) regions and other features, we should have the TSS&#39;s and their windows already saved in a file.</p>
+
+<pre><code class="r">tss_file &lt;- file.path(raw_data_dir, &quot;ensGene_TTSS.csv&quot;)
+tss_data &lt;- read.table(tss_file, header = TRUE, sep = &quot;,&quot;, stringsAsFactors = FALSE)
+tss_regions &lt;- GRanges(seqnames = tss_data$chrom,
+                       strand = tss_data$strand,
+                       ranges = IRanges(start = tss_data$txStart,
+                                        end = tss_data$txEnd),
+                       names = tss_data$name)
+rm(tss_data)
+
+tss_windows &lt;- GRanges(seqnames = seqnames(tss_regions),
+                       strand = strand(tss_regions),
+                       ranges = IRanges(start = start(tss_regions) - 1000,
+                                        end = start(tss_regions) + 1000))
+names(tss_windows) &lt;- mcols(tss_regions)$names
+save(tss_windows, file = file.path(save_dir, &quot;tss_windows.RData&quot;))
+rm(tss_windows, tss_regions)
+</code></pre>
+
+<h3>Session Info</h3>
+
+<pre><code class="r">Sys.time()
+</code></pre>
+
+<pre><code>## [1] &quot;2014-12-10 14:51:26 EST&quot;
+</code></pre>
+
+<pre><code class="r">sessionInfo()
+</code></pre>
+
+<pre><code>## R version 3.1.1 (2014-07-10)
+## Platform: x86_64-unknown-linux-gnu (64-bit)
+## 
+## locale:
+##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+## 
+## attached base packages:
+## [1] parallel  stats     graphics  grDevices utils     datasets  methods  
+## [8] base     
+## 
+## other attached packages:
+## [1] GEOquery_2.30.1           Biobase_2.24.0           
+## [3] GenomicRanges_1.16.4      GenomeInfoDb_1.0.2       
+## [5] IRanges_1.22.10           BiocGenerics_0.10.0      
+## [7] devtools_1.6.1            fmdatabreastcaparp1_0.0.1
+## 
+## loaded via a namespace (and not attached):
+##  [1] evaluate_0.5.5 formatR_1.0    knitr_1.7      markdown_0.7.4
+##  [5] RCurl_1.95-4.3 stats4_3.1.1   stringr_0.6.2  tools_3.1.1   
+##  [9] XML_3.98-1.1   XVector_0.4.0
+</code></pre>
+
+</body>
+
+</html>
