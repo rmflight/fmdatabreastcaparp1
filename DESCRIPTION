@@ -10,3 +10,5 @@ Description: Contains the data used for analysis of PARP1 nucleosome binding in
 License: CC0
 VignetteBuilder: knitr
 LazyData: TRUE
+Depends: R (>= 3.1.0)
+Suggests: GenomicRanges, GEOquery
