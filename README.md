@@ -4,7 +4,7 @@ This package contains the data used for the correlation analysis in the publicat
 
 **Genome-wide profiling of PARP1 reveals an interplay with gene regulatory regions and DNA methylation**, Nalabothula Narasimharao, Taha Al-jumaily, Robert M. Flight, Shao Xiaorong, Hunter N. B. Moseley, F. Lisa Barcellos, Yvonne Fondufe-Mittendorf, Submitted
 
-This data is used by the [analysis package](https://github.com/rmflight/fmanalysisbreastcaparp1) to generate the vignettes that report the actual correlations between PARP1 reads and other data. Unless otherwise noted, all data was downloaded for the MCF-7 cell line.
+This data is used by the [correlation analysis package](https://github.com/rmflight/fmcorrelationbreastcaparp1) to generate the vignettes that report the actual correlations between PARP1 reads and other data. Unless otherwise noted, all data was downloaded for the MCF-7 cell line.
 
 Please see the vignette for details on sources of data and processing. In most cases, what is done is simply to take data from UCSC and generate a `GenomicRanges` object that can be worked with in the analysis.
 
