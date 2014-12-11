@@ -26,7 +26,7 @@ This package contains the following `RData` objects:
 
 If this package is used in other analyses, it should be cited as:
 
-**fmdatabreastcaparp1: Fondufe-Mittendorfe lab data for PARP1 binding in MCF-7 and MDA-MB231**, R. M. Flight, T. Al-jumaily, Y. Fondufe-Mittendorf, H. N. B. Moseley  doi:XXXXXX
+**fmdatabreastcaparp1: Fondufe-Mittendorfe lab data for PARP1 correlation in MCF-7 and MDA-MB231**, R. M. Flight, T. Al-jumaily, Y. Fondufe-Mittendorf, H. N. B. Moseley  doi:10.6084/m9.figshare.1267545
 
 ## Installation
 
