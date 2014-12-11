@@ -27,6 +27,8 @@ save_dir <- "/mlab/data/rmflight/Documents/projects/work/fondufe-mittendorf_lab/
 
 ### Read in LN4 reads and save as a GenomicRanges
 
+Not evaluated in the vignette, was run once.
+
 ```{r ln4_reads, eval=FALSE}
 ln4_files <- file.path(raw_data_dir, dir(raw_data_dir, pattern = "YFM_LN4"))
 
@@ -47,6 +49,7 @@ rm(parp1_ln4_reads_all)
 
 ### Read in LN5 reads and save as GenomicRanges
 
+Not evaluated in the vignette, was run once.
 
 ```{r ln5_reads, eval=FALSE}
 ln5_files <- file.path(raw_data_dir, dir(raw_data_dir, pattern = "YFM_LN5"))
@@ -65,6 +68,7 @@ save(parp1_ln5_reads_all, file = file.path(save_dir, "parp1_ln5_reads_all.RData"
 rm(parp1_ln5_reads_all)
 ```
 
+**Stopped, re-install package to make data available.**
 
 ### Quality Check
 
@@ -124,6 +128,8 @@ So instead of having a **full** reads object, we will generate the set of **uniq
 
 ### PARP1 Unique
 
+Not run during vignette, was run once.
+
 ```{r parp1_ln4_unique, eval=FALSE}
 data(parp1_ln4_reads_all)
 max_count <- 6
@@ -142,6 +148,8 @@ parp1_ln5_counts[parp1_ln5_counts > max_count] <- max_count
 mcols(parp1_ln5_unique)$n_count <- parp1_ln5_counts
 save(parp1_ln5_unique, file = file.path(save_dir, "parp1_ln5_unique.RData"))
 ```
+
+The following data processing code was run once to generate the data files, but is not run during the vignette generation.
 
 ## CTCF
 
@@ -177,7 +185,7 @@ The methylation data comes from the UCSC table browser:
 * [rep1](http://genome.ucsc.edu/cgi-bin/hgTables?hgsid=396587911_8YHquTEUSQjmIfAHtJJT7vWY7N8U&clade=mammal&org=Human&db=hg19&hgta_group=allTracks&hgta_track=wgEncodeHaibMethylRrbs&hgta_table=wgEncodeHaibMethylRrbsMcf7DukeSitesRep1)
 * [rep2](http://genome.ucsc.edu/cgi-bin/hgTables?hgsid=396587911_8YHquTEUSQjmIfAHtJJT7vWY7N8U&clade=mammal&org=Human&db=hg19&hgta_group=allTracks&hgta_track=wgEncodeHaibMethylRrbs&hgta_table=wgEncodeHaibMethylRrbsMcf7DukeSitesRep2)
 
-```{r save_methylation}
+```{r save_methylation, eval = FALSE}
 methyl_names <- c("bin", "chrom", "start", "end", "name", "score", "strand", "thickStart", "thickEnd", "itemRGB", "readCount", "percentMeth")
 methyl_path <- file.path(raw_data_dir, "methylation_data")
 methyl_files <- file.path(methyl_path, dir(methyl_path, pattern = "mcf7_methyl"))
@@ -244,7 +252,7 @@ rm(histone_marks)
 
 The expression data is a DNA Microarray experiment, which we will get from GEO, as [GSM307014](http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM307014).
 
-```{r get_expression}
+```{r get_expression, eval=FALSE}
 expr_data <- dataTable(getGEO(GEO = "GSM307014"))@table
 expr_data$VALUE <- as.numeric(expr_data$VALUE)
 expr_data[, "DETECTION P-VALUE"] <- as.numeric(expr_data[, "DETECTION P-VALUE"])

@@ -108,28 +108,28 @@ head(ln4_counts)
 #  save(ctcf_rep2, file = file.path(save_dir, "ctcf_rep2.RData"))
 #  rm(ctcf_rep1, ctcf_rep2)
 
-## ----save_methylation----------------------------------------------------
-methyl_names <- c("bin", "chrom", "start", "end", "name", "score", "strand", "thickStart", "thickEnd", "itemRGB", "readCount", "percentMeth")
-methyl_path <- file.path(raw_data_dir, "methylation_data")
-methyl_files <- file.path(methyl_path, dir(methyl_path, pattern = "mcf7_methyl"))
-
-rep1 <- read.table(methyl_files[1], header = FALSE, sep = "\t", stringsAsFactors = FALSE)
-names(rep1) <- methyl_names
-methyl_rep1 <- GRanges(seqnames = rep1$chrom,
-                       strand = rep1$strand,
-                      ranges = IRanges(start = rep1$start, width = 1),
-                      mcols = DataFrame(rep1[, c("readCount", "percentMeth")]))
-
-rep2 <- read.table(methyl_files[2], header = FALSE, sep = "\t", stringsAsFactors = FALSE)
-names(rep2) <- methyl_names
-methyl_rep2 <- GRanges(seqnames = rep2$chrom,
-                       strand = rep2$strand,
-                      ranges = IRanges(start = rep2$start, width = 1),
-                      mcols = DataFrame(rep2[, c("readCount", "percentMeth")]))
-
-save(methyl_rep1, file = file.path(save_dir, "methyl_rep1.RData"))
-save(methyl_rep2, file = file.path(save_dir, "methyl_rep2.RData"))
-rm(methyl_rep1, methyl_rep2)
+## ----save_methylation, eval = FALSE--------------------------------------
+#  methyl_names <- c("bin", "chrom", "start", "end", "name", "score", "strand", "thickStart", "thickEnd", "itemRGB", "readCount", "percentMeth")
+#  methyl_path <- file.path(raw_data_dir, "methylation_data")
+#  methyl_files <- file.path(methyl_path, dir(methyl_path, pattern = "mcf7_methyl"))
+#  
+#  rep1 <- read.table(methyl_files[1], header = FALSE, sep = "\t", stringsAsFactors = FALSE)
+#  names(rep1) <- methyl_names
+#  methyl_rep1 <- GRanges(seqnames = rep1$chrom,
+#                         strand = rep1$strand,
+#                        ranges = IRanges(start = rep1$start, width = 1),
+#                        mcols = DataFrame(rep1[, c("readCount", "percentMeth")]))
+#  
+#  rep2 <- read.table(methyl_files[2], header = FALSE, sep = "\t", stringsAsFactors = FALSE)
+#  names(rep2) <- methyl_names
+#  methyl_rep2 <- GRanges(seqnames = rep2$chrom,
+#                         strand = rep2$strand,
+#                        ranges = IRanges(start = rep2$start, width = 1),
+#                        mcols = DataFrame(rep2[, c("readCount", "percentMeth")]))
+#  
+#  save(methyl_rep1, file = file.path(save_dir, "methyl_rep1.RData"))
+#  save(methyl_rep2, file = file.path(save_dir, "methyl_rep2.RData"))
+#  rm(methyl_rep1, methyl_rep2)
 
 ## ----read_histones, eval=FALSE-------------------------------------------
 #  histone_patterns <- list(H3k09me3 = "*H3k09me3",
@@ -153,13 +153,13 @@ rm(methyl_rep1, methyl_rep2)
 #  save(histone_marks, file = file.path(save_dir, "histone_marks.RData"))
 #  rm(histone_marks)
 
-## ----get_expression------------------------------------------------------
-expr_data <- dataTable(getGEO(GEO = "GSM307014"))@table
-expr_data$VALUE <- as.numeric(expr_data$VALUE)
-expr_data[, "DETECTION P-VALUE"] <- as.numeric(expr_data[, "DETECTION P-VALUE"])
-rownames(expr_data) <- as.character(expr_data$ID_REF)
-expr_data$ID_REF <- rownames(expr_data)
-save(expr_data, file = file.path(save_dir, "expr_data.RData"))
+## ----get_expression, eval=FALSE------------------------------------------
+#  expr_data <- dataTable(getGEO(GEO = "GSM307014"))@table
+#  expr_data$VALUE <- as.numeric(expr_data$VALUE)
+#  expr_data[, "DETECTION P-VALUE"] <- as.numeric(expr_data[, "DETECTION P-VALUE"])
+#  rownames(expr_data) <- as.character(expr_data$ID_REF)
+#  expr_data$ID_REF <- rownames(expr_data)
+#  save(expr_data, file = file.path(save_dir, "expr_data.RData"))
 
 ## ----get_tss_windows, eval = FALSE---------------------------------------
 #  tss_file <- file.path(raw_data_dir, "ensGene_TTSS.csv")

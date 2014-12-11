@@ -210,7 +210,7 @@ hr {
 
 <h1>fmdatamcf7parp1: Nucleosome bound PARP1 in MCF-7 and MDA-MB231 Cells Data</h1>
 
-<p>Authored by: <strong>Robert M Flight</strong> (<a href="mailto:rflight79@gmail.com">rflight79@gmail.com</a>) on 2014-12-10</p>
+<p>Authored by: <strong>Robert M Flight</strong> (<a href="mailto:rflight79@gmail.com">rflight79@gmail.com</a>) on 2014-12-11</p>
 
 <h2>Data Collection and Formatting</h2>
 
@@ -228,6 +228,8 @@ save_dir &lt;- &quot;/mlab/data/rmflight/Documents/projects/work/fondufe-mittend
 </code></pre>
 
 <h3>Read in LN4 reads and save as a GenomicRanges</h3>
+
+<p>Not evaluated in the vignette, was run once.</p>
 
 <pre><code class="r">ln4_files &lt;- file.path(raw_data_dir, dir(raw_data_dir, pattern = &quot;YFM_LN4&quot;))
 
@@ -247,6 +249,8 @@ rm(parp1_ln4_reads_all)
 
 <h3>Read in LN5 reads and save as GenomicRanges</h3>
 
+<p>Not evaluated in the vignette, was run once.</p>
+
 <pre><code class="r">ln5_files &lt;- file.path(raw_data_dir, dir(raw_data_dir, pattern = &quot;YFM_LN5&quot;))
 
 parp1_ln5_reads_all &lt;- GRanges(seqnames = &quot;chr1&quot;, ranges = IRanges(start = 1, end = 1), strand = &quot;*&quot;)
@@ -262,6 +266,8 @@ parp1_ln5_reads_all &lt;- parp1_ln5_reads_all[2:(length(parp1_ln5_reads_all))]
 save(parp1_ln5_reads_all, file = file.path(save_dir, &quot;parp1_ln5_reads_all.RData&quot;))
 rm(parp1_ln5_reads_all)
 </code></pre>
+
+<p><strong>Stopped, re-install package to make data available.</strong></p>
 
 <h3>Quality Check</h3>
 
@@ -349,6 +355,8 @@ head(ln4_counts)
 
 <h3>PARP1 Unique</h3>
 
+<p>Not run during vignette, was run once.</p>
+
 <pre><code class="r">data(parp1_ln4_reads_all)
 max_count &lt;- 6
 parp1_ln4_unique &lt;- unique(parp1_ln4_reads_all)
@@ -365,6 +373,8 @@ parp1_ln5_counts[parp1_ln5_counts &gt; max_count] &lt;- max_count
 mcols(parp1_ln5_unique)$n_count &lt;- parp1_ln5_counts
 save(parp1_ln5_unique, file = file.path(save_dir, &quot;parp1_ln5_unique.RData&quot;))
 </code></pre>
+
+<p>The following data processing code was run once to generate the data files, but is not run during the vignette generation.</p>
 
 <h2>CTCF</h2>
 
@@ -501,7 +511,7 @@ rm(tss_windows, tss_regions)
 <pre><code class="r">Sys.time()
 </code></pre>
 
-<pre><code>## [1] &quot;2014-12-10 14:51:26 EST&quot;
+<pre><code>## [1] &quot;2014-12-11 10:48:47 EST&quot;
 </code></pre>
 
 <pre><code class="r">sessionInfo()
@@ -523,15 +533,15 @@ rm(tss_windows, tss_regions)
 ## [8] base     
 ## 
 ## other attached packages:
-## [1] GEOquery_2.30.1           Biobase_2.24.0           
-## [3] GenomicRanges_1.16.4      GenomeInfoDb_1.0.2       
-## [5] IRanges_1.22.10           BiocGenerics_0.10.0      
-## [7] devtools_1.6.1            fmdatabreastcaparp1_0.0.1
+## [1] devtools_1.6.1            GEOquery_2.30.1          
+## [3] Biobase_2.24.0            GenomicRanges_1.16.4     
+## [5] GenomeInfoDb_1.0.2        IRanges_1.22.10          
+## [7] BiocGenerics_0.10.0       fmdatabreastcaparp1_0.0.1
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] evaluate_0.5.5 formatR_1.0    knitr_1.7      markdown_0.7.4
-##  [5] RCurl_1.95-4.3 stats4_3.1.1   stringr_0.6.2  tools_3.1.1   
-##  [9] XML_3.98-1.1   XVector_0.4.0
+## [1] evaluate_0.5.5 formatR_1.0    knitr_1.7      RCurl_1.95-4.3
+## [5] stats4_3.1.1   stringr_0.6.2  tools_3.1.1    XML_3.98-1.1  
+## [9] XVector_0.4.0
 </code></pre>
 
 </body>
