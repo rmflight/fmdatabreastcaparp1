@@ -4,7 +4,6 @@ env:
  global:
  - R_BUILD_ARGS="--no-manual --keep-empty-dirs --no-resave-data"
  - R_CHECK_ARGS="--no-vignettes --timings --no-manual"
- - secure: "dHknlaJtXultVqPvFRce3BdBa6gxgFNvaqN1k9rd0PAVSThOhKxPjQ9IYiINgYujtTCJXWFPKyyG76OoTlWfRsbV+XDieWu9TqQk96yTc8wi4p93RffsYJypg7qhy8lGc2rDqwge0f48v6IB0g6pIsHjWz6pq7nW+OBSUFvBGV4="
 
 before_install:
   - wget https://dl.dropbox.com/s/89xgvje4rfl0lml/fmdatabreastcaparp1.zip
@@ -24,9 +23,6 @@ install:
 
 script: 
   - ./travis-tool.sh run_tests
-
-after_success:
-  - ./.push_gh_pages.sh
 
 after_failure:
   - ./travis-tool.sh dump_logs
