@@ -1,0 +1,37 @@
+language: c
+
+env:
+ global:
+ - R_BUILD_ARGS="--no-manual --keep-empty-dirs --no-resave-data"
+ - R_CHECK_ARGS="--no-vignettes --timings --no-manual"
+ - secure: "dHknlaJtXultVqPvFRce3BdBa6gxgFNvaqN1k9rd0PAVSThOhKxPjQ9IYiINgYujtTCJXWFPKyyG76OoTlWfRsbV+XDieWu9TqQk96yTc8wi4p93RffsYJypg7qhy8lGc2rDqwge0f48v6IB0g6pIsHjWz6pq7nW+OBSUFvBGV4="
+
+before_install:
+  - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
+  - chmod 755 ./travis-tool.sh
+  - ./travis-tool.sh bootstrap
+  - pwd
+  - ls
+
+install:
+  - ./travis-tool.sh aptget_install r-cran-xml
+  - ./travis-tool.sh bioc_install GenomicRanges, IRanges, hgu133plus2.db, BSgenome.Hsapiens.UCSC.hg19
+  - ./travis-tool.sh install_r magrittr, pracma, stats
+  - ./travis-tool.sh install_deps
+  - wget https://dl.dropbox.com/s/89xgvje4rfl0lml/fmdatabreastcaparp1.zip
+  - unzip fmdatabreastcaparp1.zip -d fmdatabreastcaparp1/data
+
+script: 
+  - ./travis-tool.sh run_tests
+
+after_success:
+  - ./.push_gh_pages.sh
+
+after_failure:
+  - ./travis-tool.sh dump_logs
+
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
