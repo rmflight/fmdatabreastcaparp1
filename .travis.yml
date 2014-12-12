@@ -18,7 +18,8 @@ before_install:
 
 install:
   - ./travis-tool.sh aptget_install r-cran-xml
-  - ./travis-tool.sh bioc_install GenomicRanges, GEOquery
+  - Rscript -e "source('http://bioconductor.org/biocLite.R'); biocLite('GenomicRanges')"
+  - ./travis-tool.sh bioc_install GEOquery
   - ./travis-tool.sh install_deps
 
 script: 
