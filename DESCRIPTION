@@ -9,6 +9,6 @@ Description: Contains the data used for the correlation analysis of PARP1 nucleo
     MCF-7 and MDA-MB231 cells by the Fondufe-Mittendorf lab at University of Kentucky
 License: CC0
 VignetteBuilder: knitr
-LazyData: TRUE
+LazyData: FALSE
 Depends: R (>= 3.1.0)
 Suggests: GenomicRanges, GEOquery
