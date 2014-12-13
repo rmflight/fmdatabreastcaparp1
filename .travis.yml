@@ -21,7 +21,7 @@ install:
   - Rscript -e "source('http://bioconductor.org/biocLite.R'); biocLite('GenomicRanges')"
   - ./travis-tool.sh bioc_install GEOquery
   - ./travis-tool.sh install_deps
-  - Rscript -e "library('devtools'); install()"
+  - Rscript -e "library('devtools'); install(); build_vignettes()"
 
 script: 
   - ./travis-tool.sh run_tests
