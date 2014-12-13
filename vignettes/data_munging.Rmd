@@ -110,7 +110,7 @@ head(chr3_totals)
 
 From this, it looks like we should have a maximum at **5** or **6**. This is in line with what we expect based on the data available. We should do this across all of the chromosomes, however.
 
-```{r ln4_all_unique}
+```{r ln4_all_unique, eval=FALSE}
 ln4_unique <- unique(parp1_ln4_reads_all)
 ln4_overlap <- countOverlaps(ln4_unique, parp1_ln4_reads_all)
 ln4_overlap_rle <- rle(sort(ln4_overlap))
@@ -291,4 +291,3 @@ rm(tss_windows, tss_regions)
 Sys.time()
 sessionInfo()
 ```
-
