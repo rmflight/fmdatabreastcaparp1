@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rmflight/fmdatabreastcaparp1.svg?branch=master)](https://travis-ci.org/rmflight/fmdatabreastcaparp1)
+
 # Fondufe-Mittendorf Breast Cancer PARP1 Data Package
 
 This package contains the data used for the correlation analysis in the publication:
@@ -42,3 +44,9 @@ R
 library(devtools)
 install("fmdatabreastcaparp1")
 ```
+
+## Notes on Installation and Running Vignette
+
+This package requires a fair amount of memory for the vignette to be run. As far as I can tell, it will need ~4GB to run the part of the vignette that determines what to cap the reads at.
+
+Additionally, I have not been able to do more than a `build` and `install` on Travis-ci. However, the package does pass `R CMD check` on my own machine.
