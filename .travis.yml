@@ -20,7 +20,8 @@ install:
   - ./travis-tool.sh install_deps
 
 script: 
-  - ./travis-tool.sh run_tests
+  - R CMD build $R_BUILD_ARGS
+  - Rscript -e "library('devtools'); install()"
 
 after_failure:
   - ./travis-tool.sh dump_logs
