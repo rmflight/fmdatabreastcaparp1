@@ -1,0 +1,34 @@
+language: c
+
+env:
+ global:
+ - R_BUILD_ARGS="--no-manual --keep-empty-dirs --no-resave-data"
+ - R_CHECK_ARGS="--no-vignettes --timings --no-manual"
+
+before_install:
+  - wget https://dl.dropbox.com/s/89xgvje4rfl0lml/fmdatabreastcaparp1.zip
+  - mkdir data
+  - unzip fmdatabreastcaparp1.zip -d data
+  - rm fmdatabreastcaparp1.zip
+  - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
+  - chmod 755 ./travis-tool.sh
+  - ./travis-tool.sh bootstrap
+  - pwd
+  - ls
+
+install:
+  - ./travis-tool.sh aptget_install r-cran-xml
+  - ./travis-tool.sh bioc_install GenomicRanges, GEOquery
+  - ./travis-tool.sh install_deps
+
+script: 
+  - ./travis-tool.sh run_tests
+
+after_failure:
+  - ./travis-tool.sh dump_logs
+
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
