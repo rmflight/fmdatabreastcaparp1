@@ -210,7 +210,7 @@ hr {
 
 <h1>fmdatamcf7parp1: Nucleosome bound PARP1 in MCF-7 and MDA-MB231 Cells Data</h1>
 
-<p>Authored by: <strong>Robert M Flight</strong> (<a href="mailto:rflight79@gmail.com">rflight79@gmail.com</a>) on 2014-12-11</p>
+<p>Authored by: <strong>Robert M Flight</strong> (<a href="mailto:rflight79@gmail.com">rflight79@gmail.com</a>) on 2014-12-15</p>
 
 <h2>Data Collection and Formatting</h2>
 
@@ -222,8 +222,50 @@ hr {
 
 <pre><code class="r">library(fmdatabreastcaparp1)
 library(GenomicRanges)
-library(GEOquery)
-raw_data_dir &lt;- &quot;/mlab/data/rmflight/Documents/projects/work/fondufe-mittendorf_lab/parp1_data/&quot;
+</code></pre>
+
+<pre><code>## Loading required package: BiocGenerics
+## Loading required package: parallel
+## 
+## Attaching package: &#39;BiocGenerics&#39;
+## 
+## The following objects are masked from &#39;package:parallel&#39;:
+## 
+##     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+##     clusterExport, clusterMap, parApply, parCapply, parLapply,
+##     parLapplyLB, parRapply, parSapply, parSapplyLB
+## 
+## The following object is masked from &#39;package:stats&#39;:
+## 
+##     xtabs
+## 
+## The following objects are masked from &#39;package:base&#39;:
+## 
+##     anyDuplicated, append, as.data.frame, as.vector, cbind,
+##     colnames, do.call, duplicated, eval, evalq, Filter, Find, get,
+##     intersect, is.unsorted, lapply, Map, mapply, match, mget,
+##     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+##     rbind, Reduce, rep.int, rownames, sapply, setdiff, sort,
+##     table, tapply, union, unique, unlist
+## 
+## Loading required package: IRanges
+## Loading required package: GenomeInfoDb
+</code></pre>
+
+<pre><code class="r">library(GEOquery)
+</code></pre>
+
+<pre><code>## Loading required package: Biobase
+## Welcome to Bioconductor
+## 
+##     Vignettes contain introductory material; view with
+##     &#39;browseVignettes()&#39;. To cite Bioconductor, see
+##     &#39;citation(&quot;Biobase&quot;)&#39;, and for packages &#39;citation(&quot;pkgname&quot;)&#39;.
+## 
+## Setting options(&#39;download.file.method.GEOquery&#39;=&#39;curl&#39;)
+</code></pre>
+
+<pre><code class="r">raw_data_dir &lt;- &quot;/mlab/data/rmflight/Documents/projects/work/fondufe-mittendorf_lab/parp1_data/&quot;
 save_dir &lt;- &quot;/mlab/data/rmflight/Documents/projects/work/fondufe-mittendorf_lab/fmdatamcf7parp1/data&quot;
 </code></pre>
 
@@ -511,7 +553,7 @@ rm(tss_windows, tss_regions)
 <pre><code class="r">Sys.time()
 </code></pre>
 
-<pre><code>## [1] &quot;2014-12-11 10:48:47 EST&quot;
+<pre><code>## [1] &quot;2014-12-15 16:06:14 EST&quot;
 </code></pre>
 
 <pre><code class="r">sessionInfo()
@@ -533,10 +575,10 @@ rm(tss_windows, tss_regions)
 ## [8] base     
 ## 
 ## other attached packages:
-## [1] devtools_1.6.1            GEOquery_2.30.1          
-## [3] Biobase_2.24.0            GenomicRanges_1.16.4     
-## [5] GenomeInfoDb_1.0.2        IRanges_1.22.10          
-## [7] BiocGenerics_0.10.0       fmdatabreastcaparp1_0.0.1
+## [1] GEOquery_2.30.1           Biobase_2.24.0           
+## [3] GenomicRanges_1.16.4      GenomeInfoDb_1.0.2       
+## [5] IRanges_1.22.10           BiocGenerics_0.10.0      
+## [7] fmdatabreastcaparp1_0.0.1 devtools_1.6.1           
 ## 
 ## loaded via a namespace (and not attached):
 ## [1] evaluate_0.5.5 formatR_1.0    knitr_1.7      RCurl_1.95-4.3
