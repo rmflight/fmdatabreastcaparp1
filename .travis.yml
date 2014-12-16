@@ -16,7 +16,7 @@ before_install:
 
 install:
   - ./travis-tool.sh aptget_install r-cran-xml
-  - ./travis-tool.sh bioc_install GenomicRanges, GEOquery
+  - ./travis-tool.sh bioc_install GEOquery GenomicRanges
   - ./travis-tool.sh install_deps
 
 script: 
