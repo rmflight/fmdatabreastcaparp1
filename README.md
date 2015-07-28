@@ -23,6 +23,7 @@ This package contains the following `RData` objects:
 * `histone_marks`: `GRangesList` of ChIP-Seq peaks of various histone marks
 * `expr_data`: Affymetrix HGU-133 2.0 expression data
 * `tss_windows`: 2KB windows around Ensembl transcrip start sites
+* `nuc_signal`: summed MNase nucleosome signal over 500 base tiles of the genome in GM12878
 
 ## Citation
 
