@@ -1,6 +1,6 @@
 <!--
 % \VignetteEngine{knitr}
-% \VignetteIndexEntry{fmdatamcf7parp1: Nucleosome bound PARP1 in MCF-7 and MDA-MB231 Cells Data}
+% \VignetteIndexEntry{fmdatabreastcaparp1: Nucleosome bound PARP1 in MCF-7 and MDA-MB231 Cells Data}
 % \VignetteDepends{GenomicRanges, GEOquery}
 % \VignettePackage{fmdatabreastcaparp1}
 -->
