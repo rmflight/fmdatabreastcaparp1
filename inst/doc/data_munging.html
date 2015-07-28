@@ -203,14 +203,14 @@ hr {
 <body>
 <!--
 % \VignetteEngine{knitr}
-% \VignetteIndexEntry{fmdatamcf7parp1: Nucleosome bound PARP1 in MCF-7 and MDA-MB231 Cells Data}
+% \VignetteIndexEntry{fmdatabreastcaparp1: Nucleosome bound PARP1 in MCF-7 and MDA-MB231 Cells Data}
 % \VignetteDepends{GenomicRanges, GEOquery}
 % \VignettePackage{fmdatabreastcaparp1}
 -->
 
 <h1>fmdatamcf7parp1: Nucleosome bound PARP1 in MCF-7 and MDA-MB231 Cells Data</h1>
 
-<p>Authored by: <strong>Robert M Flight</strong> (<a href="mailto:rflight79@gmail.com">rflight79@gmail.com</a>) on 2014-12-15</p>
+<p>Authored by: <strong>Robert M Flight</strong> (<a href="mailto:rflight79@gmail.com">rflight79@gmail.com</a>) on 2015-07-28</p>
 
 <h2>Data Collection and Formatting</h2>
 
@@ -246,8 +246,10 @@ library(GenomicRanges)
 ##     intersect, is.unsorted, lapply, Map, mapply, match, mget,
 ##     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
 ##     rbind, Reduce, rep.int, rownames, sapply, setdiff, sort,
-##     table, tapply, union, unique, unlist
+##     table, tapply, union, unique, unlist, unsplit
 ## 
+## Loading required package: S4Vectors
+## Loading required package: stats4
 ## Loading required package: IRanges
 ## Loading required package: GenomeInfoDb
 </code></pre>
@@ -265,8 +267,8 @@ library(GenomicRanges)
 ## Setting options(&#39;download.file.method.GEOquery&#39;=&#39;curl&#39;)
 </code></pre>
 
-<pre><code class="r">raw_data_dir &lt;- &quot;/mlab/data/rmflight/Documents/projects/work/fondufe-mittendorf_lab/parp1_data/&quot;
-save_dir &lt;- &quot;/mlab/data/rmflight/Documents/projects/work/fondufe-mittendorf_lab/fmdatamcf7parp1/data&quot;
+<pre><code class="r">raw_data_dir &lt;- &quot;/mlab/data/rmflight/Projects/work/fondufe-mittendorf_lab/parp1_data/&quot;
+save_dir &lt;- &quot;/mlab/data/rmflight/Projects/work/fondufe-mittendorf_lab/fmdatamcf7parp1/data&quot;
 </code></pre>
 
 <h3>Read in LN4 reads and save as a GenomicRanges</h3>
@@ -548,19 +550,61 @@ save(tss_windows, file = file.path(save_dir, &quot;tss_windows.RData&quot;))
 rm(tss_windows, tss_regions)
 </code></pre>
 
+<h2>Nucleosome Binding from MNase on ENCODE</h2>
+
+<p>As part of our response to the reviewers, we evaluated the overlap of Parp1 nucleosome reads with signal from nucleosomes determined by MNase digestion. This required processing a <strong>bigwig</strong> file from UCSC ENCODE.</p>
+
+<p><a href="ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeSydhNsome/wgEncodeSydhNsomeGm12878Sig.bigWig">Gm12878 Nucleosome Data</a></p>
+
+<pre><code class="r">library(GenomicFiles)
+library(BSgenome.Hsapiens.UCSC.hg19)
+library(fmcorrelationbreastcaparp1)
+
+genome_tiles &lt;- tileGenome(seqinfo(Hsapiens), tilewidth = 500, cut.last.tile.in.chrom = TRUE)
+nuc_file &lt;- file.path(raw_data_dir, &quot;wgEncodeSydhNsomeGm12878Sig.bigWig&quot;)
+
+genome_tiles &lt;- genome_tiles[seqnames(genome_tiles) %in% seqnames(seqinfo(BigWigFile(nuc_file)))]
+seqlevels(genome_tiles) &lt;- paste0(&quot;chr&quot;, c(seq(1, 22), &quot;X&quot;, &quot;M&quot;))
+
+split_tiles &lt;- split(genome_tiles, seqnames(genome_tiles))
+
+MAP &lt;- function(RANGE, FILE, ...) {
+  if (length(RANGE) &gt; 0){
+    tmp &lt;- import.bw(FILE, selection=RANGE, as=&quot;GRanges&quot;)
+    tmp_cov &lt;- coverage(tmp, weight = &quot;score&quot;)
+    tmp_range &lt;- binned_function(RANGE, tmp_cov, &quot;sum&quot;, &quot;nuc&quot;)
+  } else {
+    tmp_range &lt;- GRanges()
+  }
+  tmp_range
+}
+
+bw_counts &lt;- reduceByRange(split_tiles, files = nuc_file, MAP)
+nuc_signal &lt;- GRanges()
+
+for (icount in seq(1, length(bw_counts))){
+  if (length(bw_counts[[icount]][[1]]) &gt; 0){
+    nuc_signal &lt;- append(nuc_signal, bw_counts[[icount]][[1]])
+  }
+}
+
+save(nuc_signal, file = file.path(save_dir, &quot;nuc_signal.RData&quot;))
+</code></pre>
+
 <h3>Session Info</h3>
 
 <pre><code class="r">Sys.time()
 </code></pre>
 
-<pre><code>## [1] &quot;2014-12-15 16:06:14 EST&quot;
+<pre><code>## [1] &quot;2015-07-28 13:23:05 EDT&quot;
 </code></pre>
 
 <pre><code class="r">sessionInfo()
 </code></pre>
 
-<pre><code>## R version 3.1.1 (2014-07-10)
+<pre><code>## R version 3.2.1 (2015-06-18)
 ## Platform: x86_64-unknown-linux-gnu (64-bit)
+## Running under: Fedora 22 (Twenty Two)
 ## 
 ## locale:
 ##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
@@ -571,19 +615,22 @@ rm(tss_windows, tss_regions)
 ## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
 ## 
 ## attached base packages:
-## [1] parallel  stats     graphics  grDevices utils     datasets  methods  
-## [8] base     
+## [1] stats4    parallel  stats     graphics  grDevices utils     datasets 
+## [8] methods   base     
 ## 
 ## other attached packages:
-## [1] GEOquery_2.30.1           Biobase_2.24.0           
-## [3] GenomicRanges_1.16.4      GenomeInfoDb_1.0.2       
-## [5] IRanges_1.22.10           BiocGenerics_0.10.0      
-## [7] fmdatabreastcaparp1_0.0.1 devtools_1.6.1           
+## [1] GEOquery_2.34.0           Biobase_2.28.0           
+## [3] GenomicRanges_1.20.5      GenomeInfoDb_1.4.1       
+## [5] IRanges_2.2.5             S4Vectors_0.6.1          
+## [7] BiocGenerics_0.14.0       fmdatabreastcaparp1_0.0.1
+## [9] devtools_1.8.0           
 ## 
 ## loaded via a namespace (and not attached):
-## [1] evaluate_0.5.5 formatR_1.0    knitr_1.7      RCurl_1.95-4.3
-## [5] stats4_3.1.1   stringr_0.6.2  tools_3.1.1    XML_3.98-1.1  
-## [9] XVector_0.4.0
+##  [1] Rcpp_0.11.6     XML_3.98-1.3    digest_0.6.8    bitops_1.0-6   
+##  [5] git2r_0.10.1    formatR_1.2     magrittr_1.5    evaluate_0.7   
+##  [9] stringi_0.5-5   XVector_0.8.0   curl_0.9.1      xml2_0.1.1     
+## [13] tools_3.2.1     stringr_1.0.0   RCurl_1.95-4.7  rversions_1.0.1
+## [17] memoise_0.2.1   knitr_1.10.5
 </code></pre>
 
 </body>

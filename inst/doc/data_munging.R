@@ -2,8 +2,8 @@
 library(fmdatabreastcaparp1)
 library(GenomicRanges)
 library(GEOquery)
-raw_data_dir <- "/mlab/data/rmflight/Documents/projects/work/fondufe-mittendorf_lab/parp1_data/"
-save_dir <- "/mlab/data/rmflight/Documents/projects/work/fondufe-mittendorf_lab/fmdatamcf7parp1/data"
+raw_data_dir <- "/mlab/data/rmflight/Projects/work/fondufe-mittendorf_lab/parp1_data/"
+save_dir <- "/mlab/data/rmflight/Projects/work/fondufe-mittendorf_lab/fmdatamcf7parp1/data"
 
 ## ----ln4_reads, eval=FALSE-----------------------------------------------
 #  ln4_files <- file.path(raw_data_dir, dir(raw_data_dir, pattern = "YFM_LN4"))
@@ -178,6 +178,41 @@ head(ln4_counts)
 #  names(tss_windows) <- mcols(tss_regions)$names
 #  save(tss_windows, file = file.path(save_dir, "tss_windows.RData"))
 #  rm(tss_windows, tss_regions)
+
+## ---- eval = FALSE-------------------------------------------------------
+#  library(GenomicFiles)
+#  library(BSgenome.Hsapiens.UCSC.hg19)
+#  library(fmcorrelationbreastcaparp1)
+#  
+#  genome_tiles <- tileGenome(seqinfo(Hsapiens), tilewidth = 500, cut.last.tile.in.chrom = TRUE)
+#  nuc_file <- file.path(raw_data_dir, "wgEncodeSydhNsomeGm12878Sig.bigWig")
+#  
+#  genome_tiles <- genome_tiles[seqnames(genome_tiles) %in% seqnames(seqinfo(BigWigFile(nuc_file)))]
+#  seqlevels(genome_tiles) <- paste0("chr", c(seq(1, 22), "X", "M"))
+#  
+#  split_tiles <- split(genome_tiles, seqnames(genome_tiles))
+#  
+#  MAP <- function(RANGE, FILE, ...) {
+#    if (length(RANGE) > 0){
+#      tmp <- import.bw(FILE, selection=RANGE, as="GRanges")
+#      tmp_cov <- coverage(tmp, weight = "score")
+#      tmp_range <- binned_function(RANGE, tmp_cov, "sum", "nuc")
+#    } else {
+#      tmp_range <- GRanges()
+#    }
+#    tmp_range
+#  }
+#  
+#  bw_counts <- reduceByRange(split_tiles, files = nuc_file, MAP)
+#  nuc_signal <- GRanges()
+#  
+#  for (icount in seq(1, length(bw_counts))){
+#    if (length(bw_counts[[icount]][[1]]) > 0){
+#      nuc_signal <- append(nuc_signal, bw_counts[[icount]][[1]])
+#    }
+#  }
+#  
+#  save(nuc_signal, file = file.path(save_dir, "nuc_signal.RData"))
 
 ## ------------------------------------------------------------------------
 Sys.time()
