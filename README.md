@@ -39,7 +39,7 @@ To install this package, you will need to first download the data files from `fi
 git clone https://github.com/rmflight/fmdatabreastcaparp1.git
 mkdir fmdatabreastcaparp1/data
 wget http://downloads.figshare.com/article/public/1266451.zip
-unzip fmdatabreastcaparp1.zip -d fmdatabreastcaparp1/data
+unzip 1266451.zip -d fmdatabreastcaparp1/data
 
 R
 library(devtools)
